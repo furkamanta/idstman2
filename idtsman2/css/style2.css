@@ -624,13 +624,25 @@ body {
     visibility: visible !important; 
 }
 
-/* Sosyal ikonları WhatsApp'ın hemen üzerinde ve ortada tut */
+/* Sosyal ikonları en alta, sabit footer gibi hizala */
 .social-media-3d {
     position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: calc(var(--wa-height, 80px) + 12px);
+    left: 0;
+    right: 0;
+    bottom: 0; /* en alt */
     z-index: 1200;
+    display: flex;
+    justify-content: center;
+    padding-bottom: calc(var(--wa-height, 80px) + 12px); /* WhatsApp üstüne boşluk */
+}
+
+/* Footer görünümü için kapsayıcı hafif saydam şerit */
+.social-container {
+    background: rgba(16, 33, 57, 0.65);
+    border: 1px solid #2a4d7a;
+    border-radius: 14px;
+    padding: 8px 12px;
+    backdrop-filter: blur(10px);
 }
 
 .social-icon {
@@ -1217,9 +1229,11 @@ body {
     .whatsapp-compact { left: 10px !important; right: 10px !important; width: auto !important; bottom: 12px !important; }
 
     .social-media-3d {
-        bottom: calc(var(--wa-height, 80px) + 28px) !important; /* biraz daha aşağı */
-        left: 10px !important;
-        right: 10px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        padding-bottom: calc(var(--wa-height, 80px) + 14px) !important;
+        justify-content: center !important;
     }
 
     /* Compact social icons row */
