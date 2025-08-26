@@ -339,6 +339,8 @@ body {
 .logo-3d {
     filter: drop-shadow(0 15px 30px rgba(0,0,0,0.7));
     transition: all 0.3s ease;
+    width: clamp(360px, 46vw, 700px);
+    height: auto;
 }
 
 .hologram-effect {
@@ -1027,7 +1029,8 @@ body {
 @media (max-width: 768px) {
     #wrapper {
         justify-content: flex-start;
-        padding-top: 110px; /* Logoya daha fazla yer aç */
+        padding-top: 130px; /* Logoya daha fazla yer aç ve üstünü genişlet */
+        padding-bottom: 220px; /* alt alanı genişlet */
     }
     .hologram-container {
         position: fixed;
@@ -1040,7 +1043,7 @@ body {
         text-align: center;
     }
     .logo-3d {
-        max-width: 260px; /* Mobil için logo boyutunu büyüt */
+        max-width: 85vw; /* Mobilde büyüt */
         height: auto;
     }
     #codeFormWr {
@@ -1188,7 +1191,7 @@ body {
     .whatsapp-compact { left: 10px !important; right: 10px !important; width: auto !important; bottom: 12px !important; }
 
     .social-media-3d {
-        bottom: calc(var(--wa-height, 80px) + 22px) !important;
+        bottom: calc(var(--wa-height, 80px) + 28px) !important; /* biraz daha aşağı */
         left: 10px !important;
         right: 10px !important;
     }
