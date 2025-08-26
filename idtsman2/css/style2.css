@@ -599,6 +599,12 @@ body {
     gap: 15px;
 }
 
+/* Ensure social icons never hidden by transitions */
+.social-media-3d, .social-container, .social-icons, .social-icon { 
+    opacity: 1 !important; 
+    visibility: visible !important; 
+}
+
 .social-icon {
     width: 50px;
     height: 50px;
@@ -1174,25 +1180,26 @@ body {
 }
 
 @media (max-width: 480px) {
-    #wrapper { padding-top: 90px !important; padding-bottom: 160px !important; }
+    #wrapper { padding-top: 96px !important; padding-bottom: 170px !important; }
     .form-container { padding: 18px !important; }
     .neon-label { font-size: 22px !important; }
 
     /* Make WhatsApp full-width chip and lift socials above it */
-    .whatsapp-compact { left: 10px !important; right: 10px !important; width: auto !important; }
+    .whatsapp-compact { left: 10px !important; right: 10px !important; width: auto !important; bottom: 12px !important; }
 
     .social-media-3d {
-        bottom: 90px !important;
+        bottom: 100px !important;
         left: 10px !important;
         right: 10px !important;
     }
 
     /* Compact social icons row */
     .social-container { 
-        padding: 0 !important; 
+        padding: 4px !important; 
         background: transparent !important; 
         border: none !important; 
         box-shadow: none !important; 
     }
-    .social-icon { width: 44px !important; height: 44px !important; }
+    .social-icons { gap: 8px !important; }
+    .social-icon { width: 42px !important; height: 42px !important; }
 }
