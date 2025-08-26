@@ -68,6 +68,15 @@
     }
     function login2(){ if (window.login2) window.login2(); }
 
+    // When focusing the input on mobile (soft keyboard), temporarily hide footer to prevent overlap
+    function bindKeyboardAvoidance(){
+      const input = document.getElementById('codeFld2');
+      const footer = document.getElementById('siteFooter');
+      if (!input || !footer) return;
+      input.addEventListener('focus', ()=> footer.classList.add('hidden-on-input'));
+      input.addEventListener('blur', ()=> footer.classList.remove('hidden-on-input'));
+    }
+
     // Simple notification system (top-right) every 5s, Azerbaijani names/messages
     const AZ_NAMES = ["Rauf Yusifli","Elnur Həsənov","Kənan Əliyev","Aysel Məmmədova","Nərmin Abbasova","Murad Vəliyev","Günel Quliyeva","Rəşad Məmmədov","Zaur Əliyev","Rəna Hacıyeva"];    
     const ACTIONS = [
@@ -93,7 +102,7 @@
     let notifyTimer;
     function startNotify(){ if (notifyTimer) clearInterval(notifyTimer); notifyTimer = setInterval(pushNotify, 5000); }
 
-    window.addEventListener('load', ()=>{ setLayoutHeights(); startNotify(); });
+    window.addEventListener('load', ()=>{ setLayoutHeights(); bindKeyboardAvoidance(); startNotify(); });
     window.addEventListener('resize', setLayoutHeights);
     window.addEventListener('orientationchange', setLayoutHeights);
   </script>
