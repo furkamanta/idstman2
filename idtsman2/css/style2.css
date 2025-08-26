@@ -339,7 +339,7 @@ body {
 .logo-3d {
     filter: drop-shadow(0 15px 30px rgba(0,0,0,0.7));
     transition: all 0.3s ease;
-    width: clamp(360px, 46vw, 700px);
+    width: clamp(420px, 58vw, 900px);
     height: auto;
 }
 
@@ -368,6 +368,18 @@ body {
     justify-content: center;
     gap: 40px;
     margin-bottom: 100px;
+}
+
+/* CHC PLAY 1 formunu yukarı sabitle */
+.center-form {
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+    position: fixed;
+    left: 50%;
+    top: 42vh; /* daha yukarı */
+    transform: translate(-50%, -50%);
+    z-index: 900;
 }
 
 /* Tek Form Ortalama */
@@ -610,6 +622,15 @@ body {
 .social-media-3d, .social-container, .social-icons, .social-icon { 
     opacity: 1 !important; 
     visibility: visible !important; 
+}
+
+/* Sosyal ikonları WhatsApp'ın hemen üzerinde ve ortada tut */
+.social-media-3d {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(var(--wa-height, 80px) + 12px);
+    z-index: 1200;
 }
 
 .social-icon {
@@ -1034,8 +1055,8 @@ body {
 @media (max-width: 768px) {
     #wrapper {
         justify-content: flex-start;
-        padding-top: 130px; /* Logoya daha fazla yer aç ve üstünü genişlet */
-        padding-bottom: 220px; /* alt alanı genişlet */
+        padding-top: 120px; /* üstte banner büyüdüğü için biraz azaltıldı */
+        padding-bottom: 240px; /* alta daha fazla boşluk */
     }
     .hologram-container {
         position: fixed;
@@ -1048,7 +1069,7 @@ body {
         text-align: center;
     }
     .logo-3d {
-        max-width: 85vw; /* Mobilde büyüt */
+        max-width: 92vw; /* Mobilde daha da büyüt */
         height: auto;
     }
     #codeFormWr {
