@@ -1135,3 +1135,54 @@ body {
     margin-top: 8px;
     line-height: 1.4;
 }
+
+/* =====================
+   📱 Mobile Fix Overrides
+   - Prevent overlaps
+   - Improve spacing and touch targets
+   ===================== */
+@media (max-width: 768px) {
+    /* Heavy visuals off on mobile to reduce clutter */
+    .cyber-cards,
+    .dice-container,
+    .slot-3d-container { display: none !important; }
+
+    /* Create safe area at bottom for fixed buttons */
+    #wrapper { padding-bottom: 140px !important; }
+
+    /* Tighten form spacing */
+    #codeFormWr { margin-top: 100px !important; margin-bottom: 20px !important; }
+    .form-container { padding: 22px !important; margin: 0 12px !important; }
+
+    /* Input and button sizing */
+    .cyber-input { font-size: 16px !important; padding: 12px 14px !important; }
+    .cyber-button { font-size: 16px !important; padding: 12px 14px !important; }
+
+    /* Ensure floating bars don't cover content */
+    .social-media-3d { bottom: 84px !important; left: 10px !important; }
+    .whatsapp-compact { bottom: 10px !important; right: 10px !important; left: auto; }
+}
+
+@media (max-width: 480px) {
+    #wrapper { padding-top: 90px !important; padding-bottom: 160px !important; }
+    .form-container { padding: 18px !important; }
+    .neon-label { font-size: 22px !important; }
+
+    /* Make WhatsApp full-width chip and lift socials above it */
+    .whatsapp-compact { left: 10px !important; right: 10px !important; width: auto !important; }
+
+    .social-media-3d {
+        bottom: 90px !important;
+        left: 10px !important;
+        right: 10px !important;
+    }
+
+    /* Compact social icons row */
+    .social-container { 
+        padding: 0 !important; 
+        background: transparent !important; 
+        border: none !important; 
+        box-shadow: none !important; 
+    }
+    .social-icon { width: 44px !important; height: 44px !important; }
+}
