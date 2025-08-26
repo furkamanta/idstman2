@@ -187,6 +187,18 @@
         </div>
     </div>
 
+    <script>
+    // Dynamically set WA height to prevent overlap on mobile
+    function setWAHeightVar(){
+      var wa=document.querySelector('.whatsapp-compact');
+      var h=(wa&&wa.offsetHeight?wa.offsetHeight:68); // fallback
+      document.documentElement.style.setProperty('--wa-height', h+'px');
+    }
+    window.addEventListener('load', setWAHeightVar);
+    window.addEventListener('resize', setWAHeightVar);
+    window.addEventListener('orientationchange', setWAHeightVar);
+    </script>
+
     <!-- 🎉 AZERBAYCANLI KAZANÇ BİLDİRİMLERİ -->
     <div id="winNotifications" class="win-notifications-container"></div>
 

@@ -1053,7 +1053,7 @@ body {
     /* Sosyal ikonlar görünür ve sabit konumda */
     .social-media-3d {
         position: fixed;
-        bottom: 90px;
+        bottom: calc(var(--wa-height, 80px) + 18px);
         left: 10px;
         z-index: 1200;
         opacity: 1 !important;
@@ -1188,7 +1188,7 @@ body {
     .whatsapp-compact { left: 10px !important; right: 10px !important; width: auto !important; bottom: 12px !important; }
 
     .social-media-3d {
-        bottom: 100px !important;
+        bottom: calc(var(--wa-height, 80px) + 22px) !important;
         left: 10px !important;
         right: 10px !important;
     }
