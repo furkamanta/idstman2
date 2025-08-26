@@ -98,7 +98,7 @@
         <!-- 🏆 Hologram Logo -->
         <div class="hologram-container">
             <div class="hologram-logo">
-                <img src="img/kralkazino555.png" alt="KRAL KAZINO" class="logo-3d" />
+                <img src="img/kralkazino555.png" alt="KRAL KAZINO" class="logo-3d" width="520" height="120" />
                 <div class="hologram-effect"></div>
                 <div class="laser-grid"></div>
             </div>
@@ -224,6 +224,7 @@
     </noscript>
 
 <script>
+// Inline JS minified and logs removed. Full logic lives in external js/script.js?v=4.1
 
 
     // 🚀 CYBER CASINO Login System - Form 2 (Chcplay1)
@@ -240,7 +241,7 @@
             return; 
         }
 
-        console.log("🚀 CHCPLAY1 CYBER Login başlatılıyor, kod:", val);
+
 
         // Kaydet
         localStorage.setItem('autoLoginCode', val);
@@ -250,8 +251,6 @@
         // Encode ve yönlendir
         var encodedCode = btoa(val);
         var targetUrl = `https://fastloto365.com/?_c=${encodedCode}&auto=1&cyber=1&t=${Date.now()}`;
-        
-        console.log("🎯 CHCPLAY1 CYBER Yönlendiriliyor:", targetUrl);
         
         // Cyber loading effect
         showCyberLoading();
@@ -305,40 +304,19 @@
 
     // 🎯 CYBER Auto Fill System
     function initAutoFillSystem() {
-        console.log("🔍 CYBER Otomatik doldurma sistemi başlatılıyor...");
-        
         if (window.location.hostname.includes('fastloto365.com')) {
-            console.log("✅ CYBER - Fastloto365.com sayfasında!");
-            
             var codeToUse = null;
-            
-            // URL'den kod al
             var urlParams = new URLSearchParams(window.location.search);
             var encodedCode = urlParams.get('_c');
-            
             if (encodedCode) {
-                try {
-                    codeToUse = atob(encodedCode);
-                    console.log("✅ CYBER kod decode edildi:", codeToUse);
-                } catch (e) {
-                    console.error("❌ CYBER Kod decode edilemedi:", e);
-                }
+                try { codeToUse = atob(encodedCode); } catch (e) {}
             }
-            
-            // Alternatif kaynaklar
             if (!codeToUse) {
-                codeToUse = localStorage.getItem('autoLoginCode') || 
-                           sessionStorage.getItem('autoLoginCode');
+                codeToUse = localStorage.getItem('autoLoginCode') || sessionStorage.getItem('autoLoginCode');
             }
-            
             if (codeToUse && codeToUse.length === 14) {
-                console.log("🎯 CYBER otomatik doldurma başlatılıyor:", codeToUse);
-                
-                // Temizlik
                 localStorage.removeItem('autoLoginCode');
                 sessionStorage.removeItem('autoLoginCode');
-                
-                // Çoklu deneme
                 setTimeout(() => cyberAutoFill(codeToUse), 1000);
                 setTimeout(() => cyberAutoFill(codeToUse), 2500);
                 setTimeout(() => cyberAutoFill(codeToUse), 4000);
@@ -348,8 +326,6 @@
 
     // 🎯 CYBER Auto Fill Function
     function cyberAutoFill(code) {
-        console.log('🎯 CYBER Şifre yazılıyor:', code);
-        
         var inputSelectors = [
             'input[type="text"]',
             'input[type="password"]',
@@ -364,8 +340,6 @@
             for (var j = 0; j < inputs.length; j++) {
                 var input = inputs[j];
                 if (input.offsetWidth > 0 && input.offsetHeight > 0 && !input.disabled) {
-                    console.log('✅ CYBER Input bulundu:', input);
-                    
                     input.focus();
                     input.click();
                     input.value = '';
@@ -391,13 +365,10 @@
 
     // 🎯 CYBER Button Finder
     function cyberFindButton() {
-        console.log('🔍 CYBER Buton aranıyor...');
-        
         var buttons = document.querySelectorAll('button, input[type="submit"], input[type="button"]');
         for (var i = 0; i < buttons.length; i++) {
             var btn = buttons[i];
             if (btn.offsetWidth > 0 && btn.offsetHeight > 0 && !btn.disabled) {
-                console.log('✅ CYBER Buton bulundu:', btn);
                 btn.click();
                 break;
             }

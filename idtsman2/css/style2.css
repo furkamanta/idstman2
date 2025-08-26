@@ -1021,45 +1021,55 @@ body {
 @media (max-width: 768px) {
     #wrapper {
         justify-content: flex-start;
-        padding-top: 80px; /* Logoya yer aç */
+        padding-top: 110px; /* Logoya daha fazla yer aç */
     }
     .hologram-container {
         position: fixed;
-        top: 10px;
+        top: 12px;
         left: 50%;
         transform: translateX(-50%);
         width: 100%;
-        z-index: 100;
+        z-index: 3000; /* her şeyin üstünde */
         margin-bottom: 0;
+        text-align: center;
     }
     .logo-3d {
-        max-width: 200px; /* Mobil için logo boyutu */
+        max-width: 260px; /* Mobil için logo boyutunu büyüt */
+        height: auto;
     }
     #codeFormWr {
-        margin-top: 120px; /* Logonun altından başla */
+        margin-top: 180px; /* Logonun altından başlasın */
         margin-bottom: 40px;
         width: 100%;
     }
-    .center-form {
-        max-width: 90%;
-    }
+    .center-form { max-width: 92%; }
+
+    /* Sosyal ikonlar görünür ve sabit konumda */
     .social-media-3d {
-        bottom: 10px;
+        position: fixed;
+        bottom: 90px;
         left: 10px;
+        z-index: 1200;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
+    .social-container { background: transparent; border: none; box-shadow: none; padding: 0; }
+    .social-icons { gap: 10px; }
+    .social-icon { width: 46px; height: 46px; }
+
+    /* WhatsApp çipi */
     .whatsapp-compact {
-        bottom: 10px;
+        position: fixed;
+        bottom: 12px;
+        left: 10px;
         right: 10px;
-        padding: 8px 12px;
+        z-index: 1100;
+        padding: 10px 14px;
     }
-    .win-notifications-container {
-        top: 10px;
-        right: 10px;
-        width: calc(100% - 20px);
-    }
-    .win-notification {
-        max-width: 100%;
-    }
+    .wa-number { font-size: 16px; }
+
+    .win-notifications-container { top: 10px; right: 10px; width: calc(100% - 20px); }
+    .win-notification { max-width: 100%; }
 }
 
 /* Küçük Mobil Cihazlar */
