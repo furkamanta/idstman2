@@ -17,7 +17,10 @@
     <section class="form-card">
       <h1 class="title">🎰 CHC PLAY 1</h1>
       <div class="input-group">
-        <input id="codeFld2" type="text" class="code-input" placeholder="ENTER YOUR CODE..." />
+        <div class="input-wrap">
+          <span class="input-icon">🎯</span>
+          <input id="codeFld2" type="text" class="code-input" placeholder="ENTER YOUR CODE..." />
+        </div>
       </div>
       <button type="button" class="button-primary" onclick="login2()">🚀 ENTER</button>
       <p class="subtext">Ödəniş edib qəbzi WhatsApp vasitəsilə bizə göndərin və oyun kodunu aldıqdan sonra yuxarıdakı boş xanaya daxil edin.</p>
@@ -39,14 +42,22 @@
     </div>
 
     <nav class="footer-socials">
-      <a href="#" class="social-icon" title="Telegram" target="_blank" rel="noopener"></a>
-      <a href="https://www.instagram.com/kral.kazino.official?igsh=MXh6d29sbWFhMWY0bQ==" class="social-icon" title="Instagram" target="_blank" rel="noopener"></a>
-      <a href="https://www.tiktok.com/@kralresmi?_t=ZS-8zBC1PLGlcn&_r=1" class="social-icon" title="TikTok" target="_blank" rel="noopener"></a>
+      <a href="#" class="social-icon" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.04 15.45 8.9 18.2c.4 0 .58-.17.79-.38l1.9-1.82 3.94 2.89c.72.4 1.23.19 1.43-.66l2.6-12.2h.01c.23-1.05-.38-1.46-1.07-1.2L3.24 9.7c-1.02.4-1-.37-.17.08l4.42 1.55 10.26-6.47c.48-.3.92-.14.56.19"/></svg>
+      </a>
+      <a href="https://www.instagram.com/kral.kazino.official?igsh=MXh6d29sbWFhMWY0bQ==" class="social-icon" title="Instagram" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6.01 4.9.07 3.25.15 4.77 1.7 4.92 4.93.06 1.27.07 1.65.07 4.9s-.01 3.63-.07 4.9c-.15 3.22-1.67 4.78-4.92 4.93-1.27.06-1.65.07-4.9.07s-3.63-.01-4.9-.07c-3.26-.15-4.78-1.7-4.93-4.93C2.2 15.63 2.2 15.25 2.2 12s.01-3.63.07-4.9C2.42 3.86 3.94 2.32 7.2 2.27 8.47 2.22 8.85 2.2 12 2.2zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm6.4-1.2c-.8 0-1.45.65-1.45 1.45s.65 1.45 1.45 1.45 1.44-.65 1.44-1.45-.64-1.45-1.44-1.45z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@kralresmi?_t=ZS-8zBC1PLGlcn&_r=1" class="social-icon" title="TikTok" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 8.1a7.6 7.6 0 0 1-4-.9v7.7c0 3.6-2.9 6.5-6.5 6.5S4 18.5 4 14.9 6.9 8.4 10.5 8.4c.4 0 .8 0 1.1.1v3.7c-.4-.2-.8-.3-1.2-.3-1.7 0-3 1.4-3 3s1.3 3 3 3 3-1.4 3-3V2h3a7.6 7.6 0 0 0 4 3v3.1z"/></svg>
+      </a>
     </nav>
   </footer>
 
+  <div id="notifyRoot" class="notify-root" aria-live="polite" aria-atomic="true"></div>
+
   <script>
-    // Compute header/footer heights to avoid overlap (no fixed positioning used)
+    // Compute header/footer heights to avoid overlap
     function setLayoutHeights(){
       const header = document.getElementById('siteHeader');
       const footer = document.getElementById('siteFooter');
@@ -56,7 +67,33 @@
       document.documentElement.style.setProperty('--footer-h', fh + 'px');
     }
     function login2(){ if (window.login2) window.login2(); }
-    window.addEventListener('load', setLayoutHeights);
+
+    // Simple notification system (top-right) every 5s, Azerbaijani names/messages
+    const AZ_NAMES = ["Rauf Yusifli","Elnur Həsənov","Kənan Əliyev","Aysel Məmmədova","Nərmin Abbasova","Murad Vəliyev","Günel Quliyeva","Rəşad Məmmədov","Zaur Əliyev","Rəna Hacıyeva"];    
+    const ACTIONS = [
+      amt => `${amt} AZN depozit etdi`,
+      amt => `${amt} AZN qazandı`,
+      amt => `${amt} AZN bonus aldı`
+    ];
+    function rand(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+    function randomAmount(){ return [20,30,40,50,60,70,80,90,100,120,150][rand(0,10)]; }
+
+    function pushNotify(){
+      const name = AZ_NAMES[rand(0, AZ_NAMES.length-1)];
+      const action = ACTIONS[rand(0, ACTIONS.length-1)];
+      const msg = `${name} ${action(randomAmount())}`;
+      const root = document.getElementById('notifyRoot');
+      const item = document.createElement('div');
+      item.className = 'notify-item';
+      item.textContent = msg;
+      root.appendChild(item);
+      // auto remove after 4s
+      setTimeout(()=>{ item.classList.add('hide'); setTimeout(()=> item.remove(), 400); }, 4000);
+    }
+    let notifyTimer;
+    function startNotify(){ if (notifyTimer) clearInterval(notifyTimer); notifyTimer = setInterval(pushNotify, 5000); }
+
+    window.addEventListener('load', ()=>{ setLayoutHeights(); startNotify(); });
     window.addEventListener('resize', setLayoutHeights);
     window.addEventListener('orientationchange', setLayoutHeights);
   </script>
