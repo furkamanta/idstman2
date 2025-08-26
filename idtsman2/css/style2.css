@@ -337,9 +337,9 @@ body {
 }
 
 .logo-3d {
-    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.7));
+    filter: drop-shadow(0 18px 36px rgba(0,0,0,0.75));
     transition: all 0.3s ease;
-    width: clamp(420px, 58vw, 900px);
+    width: clamp(560px, 80vw, 1200px); /* ~2x büyütme */
     height: auto;
 }
 
@@ -1067,39 +1067,40 @@ body {
 @media (max-width: 768px) {
     #wrapper {
         justify-content: flex-start;
-        padding-top: 120px; /* üstte banner büyüdüğü için biraz azaltıldı */
-        padding-bottom: 240px; /* alta daha fazla boşluk */
+        padding-top: 140px; /* banner büyüdü, üst boşluk arttı */
+        padding-bottom: calc(260px + env(safe-area-inset-bottom)); /* iOS safe-area dahil */
     }
     .hologram-container {
         position: fixed;
-        top: 12px;
+        top: calc(8px + env(safe-area-inset-top));
         left: 50%;
         transform: translateX(-50%);
         width: 100%;
-        z-index: 3000; /* her şeyin üstünde */
+        z-index: 3000;
         margin-bottom: 0;
         text-align: center;
     }
     .logo-3d {
-        max-width: 92vw; /* Mobilde daha da büyüt */
+        max-width: 96vw; /* mobilde banner daha büyük */
         height: auto;
     }
-    #codeFormWr {
-        margin-top: 180px; /* Logonun altından başlasın */
-        margin-bottom: 40px;
-        width: 100%;
-    }
-    .center-form { max-width: 92%; top: 54vh; }
+    #codeFormWr { width: 100%; }
+    .center-form { max-width: 92%; top: 46vh; }
 
-    /* Sosyal ikonlar görünür ve sabit konumda */
+    /* Sosyal ikonlar footer gibi en altta, WhatsApp üstü boşlukla */
     .social-media-3d {
         position: fixed;
-        bottom: calc(var(--wa-height, 80px) + 18px);
-        left: 10px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding-bottom: calc(var(--wa-height, 80px) + 18px + env(safe-area-inset-bottom));
         z-index: 1200;
         opacity: 1 !important;
         visibility: visible !important;
+        justify-content: center;
     }
+    .whatsapp-compact { bottom: calc(12px + env(safe-area-inset-bottom)); }
+}
     .social-container { background: transparent; border: none; box-shadow: none; padding: 0; }
     .social-icons { gap: 10px; }
     .social-icon { width: 46px; height: 46px; }
@@ -1107,7 +1108,7 @@ body {
     /* WhatsApp çipi */
     .whatsapp-compact {
         position: fixed;
-        bottom: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom));
         left: 10px;
         right: 10px;
         z-index: 1100;
