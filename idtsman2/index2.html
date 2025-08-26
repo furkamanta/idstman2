@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>KRAL KAZINO - CHC PLAY 1</title>
+  <link rel="preload" as="image" href="img/kralkazino555.png" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style2.css?v=refactor" />
+  <style>
+    /* Layout skeleton: fixed header + content + fixed footer, safe-area aware */
+    :root { --header-h: 120px; --footer-gap: 16px; }
+    @supports (padding: max(0px)) { :root { --safe-b: env(safe-area-inset-bottom); --safe-t: env(safe-area-inset-top); } }
+
+    body {
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: var(--header-h) 1fr auto;
+      background: #000; /* same theme base */
+    }
+
+    /* Header: bigger logo, centered */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 4000;
+      display: grid;
+      place-items: center;
+      padding-top: max(8px, var(--safe-t));
+      background: linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.0));
+    }
+    .app-header img {
+      width: clamp(420px, 58vw, 1000px);
+      height: auto;
+    }
+
+    /* Main: center form, no overlap with footer */
+    .app-main {
+      display: grid;
+      place-items: center;
+      padding: 12px 12px calc(120px + var(--footer-gap) + var(--safe-b, 0px));
+    }
+
+    .form-shell { width: min(92vw, 480px); }
+
+    /* Footer: socials above WhatsApp chip, centered */
+    .app-footer {
+      position: sticky;
+      bottom: 0;
+      z-index: 3500;
+      display: grid;
+      gap: 10px;
+      padding: 10px 12px calc(10px + var(--safe-b, 0px));
+      background: linear-gradient(0deg, rgba(0,0,0,.85), rgba(0,0,0,0));
+    }
+
+    .footer-socials { display: flex; justify-content: center; gap: 12px; }
+    .footer-socials .social-icon { width: 54px; height: 54px; }
+
+    /* Space where WhatsApp chip sits */
+    .footer-spacer { height: calc(var(--wa-height, 72px)); }
+
+    @media (max-width: 768px) {
+      :root { --header-h: 140px; }
+      .app-header img { width: clamp(340px, 86vw, 1080px); }
+      .app-main { padding: 12px 10px calc(140px + var(--footer-gap) + var(--safe-b, 0px)); }
+      .footer-socials .social-icon { width: 48px; height: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <img src="img/kralkazino555.png" alt="KRALKAZINO555.com" />
+  </header>
+
+  <!-- Main content -->
+  <main class="app-main">
+    <div class="form-shell">
+      <!-- Use existing form block with current theme classes for same look -->
+      <div class="form-container neon-blue center-form" style="position: static; transform: none;">
+        <div class="form-glow"></div>
+        <form id="codeFormCont2">
+          <div class="form-header">
+            <div class="form-icon">🎰</div>
+            <label for="codeFld2" class="neon-label">CHC PLAY 1</label>
+          </div>
+          <div class="input-group">
+            <input id="codeFld2" type="text" placeholder="ENTER YOUR CODE..." class="code-input" />
+          </div>
+          <button type="button" onclick="login2()" class="cyber-button blue-button">
+            <span class="button-text">🚀 ENTER</span>
+            <div class="button-particles"></div>
+          </button>
+          <p class="form-sub-text">Ödəniş edib qəbzi WhatsApp vasitəsilə bizə göndərin və oyun kodunu aldıqdan sonra yuxarıdakı boş xanaya daxil edin.</p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <!-- socials row (reuse existing markup/icons) -->
+    <div class="footer-socials">
+      <a href="#" class="social-icon telegram-icon" target="_blank" title="Telegram"></a>
+      <a href="https://www.instagram.com/kral.kazino.official?igsh=MXh6d29sbWFhMWY0bQ==" class="social-icon instagram-icon" target="_blank" title="Instagram"></a>
+      <a href="https://www.tiktok.com/@kralresmi?_t=ZS-8zBC1PLGlcn&_r=1" class="social-icon tiktok-icon" target="_blank" title="TikTok"></a>
+    </div>
+
+    <!-- WhatsApp compact (reuse existing block for same look) -->
+    <div class="whatsapp-compact">
+      <div class="whatsapp-mini-container">
+        <a href="https://wa.me/994778884343" target="_blank" class="whatsapp-mini-btn">
+          <span class="whatsapp-chip" aria-label="WhatsApp ile iletişim">
+            <span class="wa-icon" aria-hidden="true"></span>
+            <span class="wa-number">+994778884343</span>
+          </span>
+        </a>
+        <div class="mini-message">
+          <strong>VIP PAYMENT</strong> - WhatsApp ile ödeme edin.
+          <p class="whatsapp-sub-text">KOD Almaq üçün... WhatsApp işarəsinə toxunun və bizimlə WhatsApp-da əlaqə saxlayın</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spacer to keep socials above WhatsApp chip if needed -->
+    <div class="footer-spacer" aria-hidden="true"></div>
+  </footer>
+
+  <script>
+    // Measure WhatsApp chip to avoid overlaps
+    function setWAHeightVar(){
+      var wa=document.querySelector('.whatsapp-compact');
+      var h=(wa&&wa.offsetHeight?wa.offsetHeight:72);
+      document.documentElement.style.setProperty('--wa-height', h+'px');
+    }
+    window.addEventListener('load', setWAHeightVar);
+    window.addEventListener('resize', setWAHeightVar);
+    window.addEventListener('orientationchange', setWAHeightVar);
+
+    // Hook existing logic
+    function login2(){ if (typeof window.login2 === 'function') return window.login2(); }
+  </script>
+  <script src="js/script.js?v=refactor"></script>
+</body>
+</html>
