@@ -1,0 +1,12 @@
+[build]
+  publish = "idtsman2"
+  command = ""
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Basic redirect to handle SPA-like refreshes if needed
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 200
