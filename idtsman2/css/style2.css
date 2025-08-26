@@ -381,6 +381,11 @@ body {
     max-width: 450px;
     width: 100%;
     margin: 0 auto;
+    position: fixed;              /* sabit tut */
+    left: 50%;
+    top: 50vh;                    /* ekran ortası */
+    transform: translate(-50%, -50%);
+    z-index: 900;                 /* ikonlar altına al (ikonlar 1000+) */
 }
 
 .form-container {
@@ -1051,7 +1056,7 @@ body {
         margin-bottom: 40px;
         width: 100%;
     }
-    .center-form { max-width: 92%; }
+    .center-form { max-width: 92%; top: 54vh; }
 
     /* Sosyal ikonlar görünür ve sabit konumda */
     .social-media-3d {
